@@ -1,8 +1,11 @@
 <?php
 
 require 'vendor/autoload.php';
+require 'autoload.php';
+$db_user = env('DB_USERNAME');
+$db_pass = env('DB_PASSWORD');
 $client = new MongoDB\Client(
-    'mongodb://user_admin:Lukman123.@cluster0-shard-00-00.1pfio.mongodb.net:27017,cluster0-shard-00-01.1pfio.mongodb.net:27017,cluster0-shard-00-02.1pfio.mongodb.net:27017/testing?ssl=true&replicaSet=atlas-12hbg6-shard-0&authSource=admin&retryWrites=true&w=majority'
+    'mongodb://' . $db_user . ':' . $db_pass . '@cluster0-shard-00-00.1pfio.mongodb.net:27017,cluster0-shard-00-01.1pfio.mongodb.net:27017,cluster0-shard-00-02.1pfio.mongodb.net:27017/testing?ssl=true&replicaSet=atlas-12hbg6-shard-0&authSource=admin&retryWrites=true&w=majority'
 );
 $db = $client->testing;
 $collection = $db->selectCollection('barang');
